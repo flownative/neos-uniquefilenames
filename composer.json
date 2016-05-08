@@ -1,0 +1,24 @@
+{
+    "name": "flownative/neos-uniquefilenames",
+    "type": "neos-package",
+    "description": "Unique asset filename enforcement",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Rens Admiraal"
+        }
+    ],
+    "require": {
+        "typo3/neos": "^2.3"
+    },
+    "autoload": {
+        "psr-4": {
+            "Flownative\\Neos\\UniqueFileNames": "Classes/"
+        }
+    },
+    "extra": {
+        "neos": {
+            "package-key": "Flownative.Neos.UniqueFileNames"
+        }
+    }
+}
