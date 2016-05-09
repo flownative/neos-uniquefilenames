@@ -14,7 +14,7 @@
     },
     "autoload": {
         "psr-4": {
-            "Flownative\\Neos\\UniqueFilenames": "Classes/"
+            "Flownative\\Neos\\UniqueFilenames\\": "Classes/"
         }
     },
     "extra": {
