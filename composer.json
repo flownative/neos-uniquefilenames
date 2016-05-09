@@ -5,7 +5,8 @@
     "license": "MIT",
     "authors": [
         {
-            "name": "Rens Admiraal"
+            "name": "Rens Admiraal",
+            "role": "Developer"
         }
     ],
     "require": {
@@ -13,12 +14,12 @@
     },
     "autoload": {
         "psr-4": {
-            "Flownative\\Neos\\UniqueFileNames": "Classes/"
+            "Flownative\\Neos\\UniqueFilenames": "Classes/"
         }
     },
     "extra": {
         "neos": {
-            "package-key": "Flownative.Neos.UniqueFileNames"
+            "package-key": "Flownative.Neos.UniqueFilenames"
         }
     }
 }

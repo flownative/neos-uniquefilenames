@@ -1,5 +1,5 @@
 <?php
-namespace Flownative\Neos\UniqueFileNames;
+namespace Flownative\Neos\UniqueFilenames;
 
 use Doctrine\ORM\Query;
 use TYPO3\Flow\Annotations as Flow;
@@ -10,7 +10,7 @@ use TYPO3\Media\Domain\Model\AssetInterface;
 use TYPO3\Media\Domain\Validator\AssetValidatorInterface;
 use TYPO3\Neos\Controller\BackendUserTranslationTrait;
 
-class UniqueFileNameValidator extends AbstractValidator implements AssetValidatorInterface
+class UniqueFilenameValidator extends AbstractValidator implements AssetValidatorInterface
 {
     use BackendUserTranslationTrait;
 
@@ -63,7 +63,7 @@ class UniqueFileNameValidator extends AbstractValidator implements AssetValidato
 
         if (count($result) > 0) {
             $this->addError(
-                $this->translator->translateById('assetWithTitleAlreadyExists', [$fileName], null, $this->_localizationService->getConfiguration()->getCurrentLocale(), 'Main', 'Flownative.Neos.UniqueFileNames'),
+                $this->translator->translateById('assetWithTitleAlreadyExists', [$fileName], null, $this->_localizationService->getConfiguration()->getCurrentLocale(), 'Main', 'Flownative.Neos.UniqueFilenames'),
                 1462705529
             );
         }
