@@ -1,14 +1,15 @@
 <?php
 namespace Flownative\Neos\UniqueFilenames;
 
+use Doctrine\Common\Persistence\ObjectManager as DoctrineObjectManager;
 use Doctrine\ORM\Query;
-use TYPO3\Flow\Annotations as Flow;
-use TYPO3\Flow\I18n\Translator;
-use TYPO3\Flow\Persistence\PersistenceManagerInterface;
-use TYPO3\Flow\Validation\Validator\AbstractValidator;
-use TYPO3\Media\Domain\Model\AssetInterface;
-use TYPO3\Media\Domain\Validator\AssetValidatorInterface;
-use TYPO3\Neos\Controller\BackendUserTranslationTrait;
+use Neos\Flow\Annotations as Flow;
+use Neos\Flow\I18n\Translator;
+use Neos\Flow\Persistence\PersistenceManagerInterface;
+use Neos\Flow\Validation\Validator\AbstractValidator;
+use Neos\Media\Domain\Model\AssetInterface;
+use Neos\Media\Domain\Validator\AssetValidatorInterface;
+use Neos\Neos\Controller\BackendUserTranslationTrait;
 
 class UniqueFilenameValidator extends AbstractValidator implements AssetValidatorInterface
 {
@@ -31,12 +32,12 @@ class UniqueFilenameValidator extends AbstractValidator implements AssetValidato
      * interface ...
      *
      * @Flow\Inject
-     * @var \Doctrine\Common\Persistence\ObjectManager
+     * @var DoctrineObjectManager
      */
     protected $entityManager;
 
     /**
-     * Check if $value is valid. If it is not valid, needs to add an errorw
+     * Check if $value is valid. If it is not valid, needs to add an error
      * to Result.
      *
      * @param AssetInterface $value
@@ -48,7 +49,7 @@ class UniqueFilenameValidator extends AbstractValidator implements AssetValidato
 
         /** @var Query $query */
         $query = $this->entityManager->createQuery(
-            'SELECT a FROM TYPO3\Media\Domain\Model\Asset a JOIN a.resource r WHERE (a.title = :fileName OR r.filename = :fileName) AND a.Persistence_Object_Identifier != :assetIdentifier'
+            'SELECT a FROM Neos\Media\Domain\Model\Asset a JOIN a.resource r WHERE (a.title = :fileName OR r.filename = :fileName) AND a.Persistence_Object_Identifier != :assetIdentifier'
         );
 
         $query->setParameter('fileName', $fileName);
@@ -58,7 +59,7 @@ class UniqueFilenameValidator extends AbstractValidator implements AssetValidato
 
         // We need to exclude ImageVariant objects, but can not do that in the DQL query
         $result = array_filter($result, function($value) {
-            return $value['dtype'] !== 'typo3_media_imagevariant';
+            return $value['dtype'] !== 'neos_media_imagevariant';
         });
 
         if (count($result) > 0) {
