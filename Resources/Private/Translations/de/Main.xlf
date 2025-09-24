@@ -4,7 +4,7 @@
 		<body>
 			<trans-unit id="assetWithTitleAlreadyExists" xml:space="preserve">
 				<source>An asset with filename "{0}" already exists.</source>
-				<target xml:lang="de">Ein asset mit dem Dateinamen "{0}" existiert bereits.</target></trans-unit>
+				<target xml:lang="de">Ein Asset mit dem Dateinamen "{0}" existiert bereits.</target></trans-unit>
 			</trans-unit>
 		</body>
 	</file>
